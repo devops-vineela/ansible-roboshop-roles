@@ -1,12 +1,14 @@
-- name: install maven
+- name: install maven and mysql
   ansible.builtin.package:
-    name: maven
+    name: "{{ item }}"
     state: installed
+  loop:
+  - maven
+  - mysql
 
 - name: install pymysql
   ansible.builtin.pip:
     name: PyMySQL
-    state: present
     executable: pip3.9
 
 - name: install maven dependencies
@@ -15,6 +17,6 @@
     chdir: /app
 
 - name: rename jar file
-  ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+  ansible.builtin.command: "mv target/{{ component }}-1.0.jar {{ component }}.jar"
   args:
     chdir: /app

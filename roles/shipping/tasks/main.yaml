@@ -8,15 +8,7 @@
     name: common
     tasks_from: mavensetup.yaml
 
-- name: systemdsetup
-  include_role:
-    name: common
-    tasks_from: systemdsetup.yaml
 
-- name: install mysql client
-  ansible.builtin.package:
-    name: mysql
-    state: installed
 
 - name: import data
   community.mysql.mysql_db:
@@ -31,7 +23,9 @@
   - /app/db/app-user.sql 
   - /app/db/master-data.sql
 
-- name: restart shipping
-  ansible.builtin.service:
-    name: shipping
-    state: restarted
+- name: systemdsetup
+  include_role:
+    name: common
+    tasks_from: systemdsetup.yaml
+
+
