@@ -6,11 +6,14 @@
   - maven
   - mysql
 
-- name: install pymysql
+- name: install PyMySQL and cryptography 
   ansible.builtin.pip:
-    name: PyMySQL
+    name: "{{ item }}"
     executable: pip3.9
-
+  loop:
+  - cryptography
+  - PyMySQL
+  
 - name: install maven dependencies
   ansible.builtin.command: mvn clean package
   args:
