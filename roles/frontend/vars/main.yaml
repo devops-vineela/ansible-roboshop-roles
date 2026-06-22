@@ -1,0 +1,5 @@
+CATALOGUE_HOST: catalogue.daws-84s.bond
+USER_HOST: user.daws-84s.bond
+CART_HOST: cart.daws-84s.bond
+SHIPPING_HOST: shipping.daws-84s.bond
+PAYMENT_HOST: payment.daws-84s.bond
