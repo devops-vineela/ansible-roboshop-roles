@@ -1,0 +1,38 @@
+- name: appsetup
+  include_role:
+    name: common
+    tasks_from: appsetup.yaml
+
+- name: nodejssetup
+  include_role:
+    name: common
+    tasks_from: nodejssetup.yaml
+
+- name: systemdsetup
+  include_role:
+    name: common
+    tasks_from: systemdsetup.yaml
+
+- name: copy mongo repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: install mongodb client
+  ansible.builtin.package:
+    name: mongodb-mongosh
+    state: installed
+
+- name: checking products loaded or not
+  ansible.builtin.command: mongosh --host mongodb.daws-84s.bond  --eval 'db.getMongo().getDBNames(). indexOf("catalogue")'
+  register: catalogue_output
+
+# - name: print catalogue output
+#   ansible.builtin.debug:
+#     msg: "{{ catalogue_output }}"
+
+
+- name: load products
+  ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
+

@@ -1,0 +1,15 @@
+
+- name: appsetup
+  include_role:
+    name: common
+    tasks_from: appsetup.yaml
+
+- name: nodejssetup
+  include_role:
+    name: common
+    tasks_from: nodejssetup.yaml
+
+- name: systemdsetup
+  include_role:
+    name: common
+    tasks_from: systemdsetup.yaml

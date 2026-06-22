@@ -1,0 +1,3 @@
+CART_HOST: cart.daws-84s.bond
+USER_HOST: user.daws-84s.bond
+RABBITMQ_HOST: rabbitmq.daws-84s.bond
