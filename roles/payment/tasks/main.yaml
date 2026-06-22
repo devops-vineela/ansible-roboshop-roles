@@ -1,0 +1,15 @@
+
+- name: appsetup
+  include_role:
+    name: common
+    tasks_from: appsetup
+
+- name: pythonsetup
+  include_role:
+    name: common
+    tasks_from: pythonsetup
+
+- name: systemdsetup
+  inclide_role:
+    name: common
+    tasks_from: systemdsetup
