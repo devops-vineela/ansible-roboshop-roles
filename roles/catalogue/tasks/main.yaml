@@ -37,8 +37,8 @@
   when: catalogue_output.stdout | int < 0
 
 - name: deployment
-  tags:
-  - deployment
+  # tags:
+  # - deployment
   include_role: 
     name: common
     tasks_from: deployment
