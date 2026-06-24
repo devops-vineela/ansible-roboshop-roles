@@ -36,3 +36,10 @@
   ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
   when: catalogue_output.stdout | int < 0
 
+- name: deployment
+  tags:
+  - deployment
+  include-role: 
+    name: common
+    tasks_from: deployment
+ 
