@@ -1,4 +1,3 @@
-
 - name: appsetup
   include_role:
     name: common
