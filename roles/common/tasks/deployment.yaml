@@ -8,7 +8,7 @@
     path: /app
     state: absent
 
-- name: download the {{ component }} code
+- name: "download the {{ component }} code"
   ansible.builtin.unarchieve:
     src: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-{{ version }}.zip
     dest: /app
