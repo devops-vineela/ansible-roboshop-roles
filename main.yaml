@@ -2,7 +2,7 @@
   become: yes
   hosts: "{{ component }}"
   vars_files:
-  - vault/mysql.yaml
+  - mysql.yaml
   roles:
   - "{{ component }}"
   
